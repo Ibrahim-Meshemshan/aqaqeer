@@ -1,0 +1,6 @@
+arb-dir: lib/core/l10n
+template-arb-file: app_en.arb
+output-localization-file: app_localizationsNew.dart
+synthetic-package: false
+output-dir: lib/core/l10n/localizations
+untranslated-messages-file: lib/core/l10n/missing_translations.txt

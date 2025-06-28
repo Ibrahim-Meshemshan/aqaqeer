@@ -1,0 +1,4 @@
+enum NavigationOption {
+  module,
+  solution,
+}

@@ -1,0 +1,21 @@
+<svg width="428" height="375" viewBox="0 0 428 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FF387B" />
+            <stop offset="100%" style="stop-color:#91069C" />
+        </linearGradient>
+    </defs>
+    <path d="M0 0H428V342C428 360.225 413.225 375 395 375H33C14.7746 375 0 360.225 0 342V0Z" fill="url(#gradient)"/>
+    <mask id="mask0_248_11" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="428" height="375">
+        <path d="M0 0H428V342C428 360.225 413.225 375 395 375H33C14.7746 375 0 360.225 0 342V0Z" fill="#F78F36"/>
+    </mask>
+    <g mask="url(#mask0_248_11)">
+        <rect opacity="0.4" x="510.651" y="-217" width="304.972" height="241.918" rx="35" transform="rotate(80.5731 510.651 -217)" fill="white"/>
+    </g>
+    <mask id="mask1_248_11" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="43" width="428" height="332">
+        <path d="M0 43H428V342C428 360.225 413.225 375 395 375H33C14.7746 375 0 360.225 0 342V43Z" fill="#F78F36"/>
+    </mask>
+    <g mask="url(#mask1_248_11)">
+        <rect opacity="0.4" width="301.726" height="217.051" rx="35" transform="matrix(0.959995 0.280018 -0.34877 0.937208 -181.299 191.736)" fill="white"/>
+    </g>
+</svg>

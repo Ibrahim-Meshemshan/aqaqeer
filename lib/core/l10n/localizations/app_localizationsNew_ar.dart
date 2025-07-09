@@ -75,7 +75,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get first_name => 'الاسم الأول';
 
   @override
-  String get last_name => 'الاسم الأخير';
+  String get last_name => 'الكنية';
 
   @override
   String get delete_account => 'حذف الحساب';
@@ -144,7 +144,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get please_enter_date_of_birth => 'يرجى إدخال تاريخ الميلاد';
 
   @override
-  String get confirm_password => 'تأكيد كامة المرور';
+  String get confirm_password => 'تأكيد كلمة المرور';
 
   @override
   String get confirm_pass_match_validation => 'تأكيد مطابقة كلمة المرور';
@@ -172,4 +172,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get year => 'السنة';
+
+  @override
+  String get fail_login => 'فشل تسجيل الدخول البيانات غير صحيحة';
+
+  @override
+  String get mobile_number => 'رقم الموبايل';
+
+  @override
+  String get please_enter_mobile_number => 'يرجى إدخال رقم الموبايل ';
+
+  @override
+  String get please_enter_valid_mobile_number => 'يرجى إدخال رقم موبايل صحيح';
+
+  @override
+  String get fail_confirm => 'غير مطابقة لكلمة المرور';
+
+  @override
+  String get meddle_name => 'اسم الأب';
 }

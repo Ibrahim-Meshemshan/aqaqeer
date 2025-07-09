@@ -1,10 +1,14 @@
 
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../../../../../core/bloc_status.dart';
-import '../../../../data/repo/auth_repository_impl.dart';
+import '../../../../../../../core/bloc_status.dart';
+import '../../../../../data/models/signup_model.dart';
+import '../../../../../data/repo/auth_repository_impl.dart';
+import '../../../../../domain/entities/signup_params.dart';
 
 
 part 'sign_up_event.dart';
@@ -13,22 +17,22 @@ part 'sign_up_state.dart';
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   AuthRepositoryImpl authRepositoryImpl;
 
-  SignUpBloc(this.authRepositoryImpl) : super(SignUpState()) {
+  SignUpBloc({required this.authRepositoryImpl}) : super(SignUpState()) {
     on<SignUpEvent>((event, emit) async {
-      // if (event is SignUpSubmission) {
-      //   //print("formKey.currentState?.validate() ${signUpFormKey.currentState?.validate() ?? false}");
-      //   emit(state.copyWith(signUpState: BlocStatus.loading()));
-      //   final result =
-      //       await authRepositoryImpl.signUp(signUpParams: event.signUpParams);
-      //   result.fold((fail) {
-      //     log('Caught error: ${fail.message}');
-      //     emit(state.copyWith(
-      //         signUpState: BlocStatus.fail(error: fail.message)));
-      //   }, (model) {
-      //     emit(state.copyWith(signUpState: BlocStatus.success(model: model)));
-      //   });
-      //   if ((signUpFormKey.currentState?.validate() ?? false)) {}
-      // }
+      if (event is SignUpSubmission) {
+        //print("formKey.currentState?.validate() ${signUpFormKey.currentState?.validate() ?? false}");
+        emit(state.copyWith(signUpState: BlocStatus.loading()));
+        final result =
+            await authRepositoryImpl.signup(signupParams: event.signUpParams);
+        result.fold((fail) {
+          log('Caught error: ${fail.message}');
+          emit(state.copyWith(
+              signUpState: BlocStatus.fail(error: fail.message)));
+        }, (signup) {
+          emit(state.copyWith(signUpState: BlocStatus.success(model: signup)));
+        });
+        // if ((signUpFormKey.currentState?.validate() ?? false)) {}
+      }
       // if (event is GetSignUpOtpEvent) {
       //   emit(state.copyWith(signupOtpState: BlocStatus.loading()));
       //   final result = await authRepositoryImpl.getOtp(mobile: event.mobile);

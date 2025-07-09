@@ -9,7 +9,7 @@ class AppStrings {
   static const String langEn = "en";
   static const String appVersion = "1.0.0";
   static const String applicationCode = 'MET';
-  static const String userTypeCode = 'RAS_USER'; //RAS_USER
+  // static const String userTypeCode = 'Pharmacy'; // todo:   //RAS_USER
   static const String operatingSystem = 'Android'; //RAS_USER
   static const bool isOffline = true; //RAS_USER
 
@@ -46,7 +46,7 @@ class AppStrings {
   static String PICTURE_KEY = 'picture';
   static String REMEMBER_TOKEN_KEY = 'rememberToken';
   static String FINGERPRINT_REMEMBER_TOKEN_KEY = 'fingerprintRememberToken';
-  static String BASE_URL_KEY = 'base_url';
+  static String BASE_URL_KEY = 'https://new.aqaqer.com'; // base_url
   static String LOGO_PATH_KEY = 'logo_path';
   static String CUSTOMER_KEY = 'customer';
   static String CLIENT_CODE_KEY = 'client_code';

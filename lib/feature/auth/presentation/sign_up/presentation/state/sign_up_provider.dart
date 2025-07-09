@@ -8,7 +8,8 @@ class SignUpProvider extends ChangeNotifier{
     notifyListeners();
   }
   String? name;
-  String? surName;
+  String? last_name;
+  String? meddle_name;
   String? city;
   String? nationalId;
   String? mobile;
@@ -23,3 +24,4 @@ class SignUpProvider extends ChangeNotifier{
     notifyListeners();
   }
 }
+

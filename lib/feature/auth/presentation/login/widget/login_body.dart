@@ -1,6 +1,7 @@
 // ignore_for_file:  depend_on_referenced_packages
 import 'dart:developer';
 import 'package:aqaqeer/core/common/config/lang/app_localizations.dart';
+import 'package:aqaqeer/core/routes/routes_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +42,7 @@ class _LoginBodyState extends State<LoginBody> {
                   icon: Icons.check,
                 );
 
-                if (state.logInState.model!.data?.tOKEN != null) {
+                if (state.logInState.model!.accessToken != null) {
                   var clientCode=locator.get<AppManagerLocal>().getCustomer()?.data?.cLIENTCODE??"";
                   locator
                       .get<AppManagerLocal>()
@@ -51,7 +52,7 @@ class _LoginBodyState extends State<LoginBody> {
                         () {},
                   );
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                      Routes.mainRootPage, (route) => false);
+                      RoutesNames.rootScreenView, (route) => false);
                 } else {
                   showSnackBar(
                     message: ('logged_fail').tr(context),

@@ -29,14 +29,16 @@ class DioInterceptor extends Interceptor {
 
     // Create the error param
     log('message before create error');
-    // errorParam = await createErrorParam(
-    //     message: errorMessage,
-    //     stackTrace: stackTrace,
-    //     statusCode: statusCode,
-    //     requestMethod: err.requestOptions.method,
-    //     requestPath: requestPath,
-    //     response: response
-    // );
+    errorParam = await createErrorParam(
+        message: errorMessage,
+        stackTrace: stackTrace,
+        statusCode: statusCode,
+        requestMethod: err.requestOptions.method,
+        requestPath: requestPath,
+        response: response,
+        param: 'asd',
+        body: 'aaa'
+    );
     log('message after create error');
 
     // log('stack trace from dio $stackTrace');
@@ -62,7 +64,7 @@ class DioInterceptor extends Interceptor {
         _reAuthCompleter = Completer<void>();
 
         // Trigger re-authentication (login)
-        await reAuth();
+        // await reAuth();
 
         // Mark re-authentication as complete
         _isReAuthenticating = false;

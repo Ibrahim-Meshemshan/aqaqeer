@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+
 import '../../../../../core/common/constant/strings.dart';
 import '../../../../../core/common/storage/cash_helper.dart';
+
 
 class AuthLocal {
   CashHelper cashHelper;
@@ -10,6 +12,7 @@ class AuthLocal {
 
   Future saveAuthToken(String value) async {
     log('---- Save AuthToken to Cash----');
+
     await cashHelper.setString(AppStrings.TOKEN_KEY, value);
   }
 
@@ -29,7 +32,7 @@ class AuthLocal {
   }
 
   String? getRememberToken() {
-    log('---- Get the AuthToken from Cash----');
+    log('---- Get the RememberToken from Cash----');
     return cashHelper.getData(key: AppStrings.REMEMBER_TOKEN_KEY);
   }
 

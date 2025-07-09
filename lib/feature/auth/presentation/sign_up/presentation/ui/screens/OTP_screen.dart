@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:aqaqeer/core/l10n/localizations/app_localizationsNew.dart';
 import 'package:aqaqeer/core/routes/routes_names.dart';
 import 'package:flutter/material.dart';
@@ -9,21 +8,22 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:timer_count_down/timer_controller.dart';
-
-import '../../../../../../core/common/config/theme/src/colors.dart';
-import '../../../../../../core/common/config/theme/src/styles.dart';
-import '../../../../../../core/common/function/get_width_height_screen.dart';
-import '../../../../../../core/common/widgets/buttons/custom_button.dart';
-import '../../../../../../core/common/widgets/custom_texts/custom_text.dart';
-import '../../../../../../core/common/widgets/loader_widget.dart';
-import '../../../../../../core/common/widgets/snack_bar/snack_bar_custom.dart';
-import '../../../../../../core/di/di.dart';
-import '../../../../../../core/injection/injection.dart';
-import '../../../../../../core/provider/app_config_provider.dart';
-import '../../../../../../resources/assets.gen.dart';
-import '../../../../data/data_source/local/local.dart';
+import '../../../../../../../core/common/config/theme/src/colors.dart';
+import '../../../../../../../core/common/config/theme/src/styles.dart';
+import '../../../../../../../core/common/function/get_width_height_screen.dart';
+import '../../../../../../../core/common/widgets/buttons/custom_button.dart';
+import '../../../../../../../core/common/widgets/custom_texts/custom_text.dart';
+import '../../../../../../../core/common/widgets/loader_widget.dart';
+import '../../../../../../../core/common/widgets/snack_bar/snack_bar_custom.dart';
+import '../../../../../../../core/di/di.dart';
+import '../../../../../../../core/injection/injection.dart';
+import '../../../../../../../core/provider/app_config_provider.dart';
+import '../../../../../../../resources/assets.gen.dart';
+import '../../../../../data/data_source/local/local.dart';
 import '../../state/bloc/sign_up_bloc.dart';
 import '../../state/sign_up_provider.dart';
+
+
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({super.key});

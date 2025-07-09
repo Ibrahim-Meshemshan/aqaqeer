@@ -1,11 +1,15 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'dart:developer';
+import 'package:aqaqeer/core/provider/app_config_provider.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import '../../../../feature/auth/data/data_source/local/local.dart';
+import '../../../di/di.dart';
 import '../../../injection/injection.dart';
 import '../../config/lang/state/store_current_lang.dart';
 import '../../constant/strings.dart';
 import '../api_service.dart';
+
 
 class DioClient extends ApiServices {
   final Dio _dio;
@@ -20,9 +24,11 @@ class DioClient extends ApiServices {
         dynamic params,
         dynamic token}) async {
     _dio.options.headers = {
+
       'token': token ?? locator.get<AuthLocal>().getAuthToken(),
-      'userTypeCode': 'RAS_USER',
-      'lang': locator.get<LanguageStorage>().getCurrentLang(),
+      // 'userTypeCode': AppStrings.userTypeCode,
+      'lang': 'ar', // getIt<AppConfigProvider>().selectedLocal  application/x-www-form-urlencoded
+
     };
     var response = await _dio.get(url, data: data, queryParameters: params);
     return response;
@@ -34,22 +40,20 @@ class DioClient extends ApiServices {
     dynamic data,
     dynamic params,
     dynamic option,
-    void Function(int, int)? onSendProgress,
   }) async {
     _dio.options.headers = {
-      'token': locator.get<AuthLocal>().getAuthToken(),
-      'userTypeCode': 'RAS_USER',
-      'lang': locator.get<LanguageStorage>().getCurrentLang() ?? "ar",
-      'osType': AppStrings.operatingSystem,
+      'lang': AppStrings.langAr,
+      // 'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      
     };
-    var response = await _dio.post(
+
+    return await _dio.post(
       url,
       data: data,
       queryParameters: params,
       options: option,
-      onSendProgress: onSendProgress,
     );
-    return response;
   }
 
   @override
@@ -64,10 +68,11 @@ class DioClient extends ApiServices {
     return response;
   }
 
-  Future<Response> dioPost(
-      {required String url, var data, dynamic param, dynamic contentType}) {
+
+
+  Future<Response> dioPost({required String url, var data, dynamic param, dynamic contentType}) {
     var headers = {
-      'userTypeCode': AppStrings.userTypeCode,
+      //'userTypeCode': AppStrings.userTypeCode,
       'lang': locator.get<LanguageStorage>().getCurrentLang(),
       'token': locator.get<AuthLocal>().getAuthToken(),
     };
@@ -87,7 +92,7 @@ class DioClient extends ApiServices {
     required String url,
   }) {
     var headers = {
-      'userTypeCode': AppStrings.userTypeCode,
+      //'userTypeCode': AppStrings.userTypeCode,
       'lang': locator.get<LanguageStorage>().getCurrentLang(),
       'token': locator.get<AuthLocal>().getAuthToken(),
     };
@@ -106,7 +111,7 @@ class DioClient extends ApiServices {
     required Function(String) onProgress,
   }) {
     var headers = {
-      'userTypeCode': AppStrings.userTypeCode,
+      //'userTypeCode': AppStrings.userTypeCode,
       'lang': locator.get<LanguageStorage>().getCurrentLang(),
       'token': locator.get<AuthLocal>().getAuthToken(),
     };
@@ -136,7 +141,7 @@ class DioClient extends ApiServices {
     dynamic param,
   }) {
     var headers = {
-      'userTypeCode': AppStrings.userTypeCode,
+      //'userTypeCode': AppStrings.userTypeCode,
       'lang': locator.get<LanguageStorage>().getCurrentLang(),
       'token': locator.get<AuthLocal>().getAuthToken(),
     };
@@ -153,3 +158,4 @@ class DioClient extends ApiServices {
     );
   }
 }
+

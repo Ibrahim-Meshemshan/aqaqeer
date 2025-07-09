@@ -16,7 +16,7 @@ class HomeRepoImp extends HomeRepository{
   Future<Either<Failure, NewsModel>> fetchNews() async {
     if (await networkInfo.isConnected) {
       try{
-        NewsModel newsModel=await  homeRemote.getNews();
+        NewsModel newsModel = await homeRemote.getNews();
         return Right(newsModel);
       }catch(error){
         return Left(ErrorHandler.handle(error).failure);

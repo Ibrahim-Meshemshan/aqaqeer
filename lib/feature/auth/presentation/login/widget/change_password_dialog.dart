@@ -21,6 +21,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
   TextEditingController oldPasswordController = TextEditingController();
 
   TextEditingController newPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

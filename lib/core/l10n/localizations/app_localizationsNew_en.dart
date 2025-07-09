@@ -172,4 +172,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get year => 'year';
+
+  @override
+  String get fail_login => 'Login failed, incorrect data';
+
+  @override
+  String get mobile_number => 'Mobile Number';
+
+  @override
+  String get please_enter_mobile_number => 'Please enter mobile number';
+
+  @override
+  String get please_enter_valid_mobile_number => 'Please enter a valid mobile number';
+
+  @override
+  String get fail_confirm => 'Password dose not match';
+
+  @override
+  String get meddle_name => 'Meddle Name';
 }

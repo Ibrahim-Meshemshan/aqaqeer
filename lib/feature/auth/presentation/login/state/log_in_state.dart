@@ -4,13 +4,13 @@ part of 'log_in_bloc.dart';
 
 @immutable
 class LoginState extends Equatable {
-   LoginState({
-    this.logInState = const BlocStatus(),
-    this.changePasswordState = const BlocStatus(),
-  });
-
   late  BlocStatus<UserModel> logInState;
   late  BlocStatus<ChangePasswordModel> changePasswordState;
+
+   LoginState({this.logInState = const BlocStatus(), this.changePasswordState = const BlocStatus(),
+  });
+
+
 
   @override
   List<Object?> get props => [logInState,changePasswordState];
@@ -20,8 +20,8 @@ class LoginState extends Equatable {
     BlocStatus<ChangePasswordModel>? changePasswordState,
   }) {
     return LoginState(
-        logInState: logInState ?? this.logInState,
-        changePasswordState: changePasswordState ?? this.changePasswordState
+      logInState: logInState ?? this.logInState,
+      changePasswordState: changePasswordState ?? this.changePasswordState,
     );
   }
 }

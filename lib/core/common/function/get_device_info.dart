@@ -14,7 +14,7 @@ Future<void> getDeviceInfo() async {
   try {
     if (Platform.isAndroid) {
       final androidInfo = await deviceInfoPlugin.androidInfo;
-      deviceInfoService.deviceName = androidInfo.device;
+      deviceInfoService.deviceName = '' ; //androidInfo.device
       deviceInfoService.deviceModel = androidInfo.model;
       deviceInfoService.deviceManufacturer = androidInfo.manufacturer;
       deviceInfoService.deviceSystemVersion = androidInfo.version.release;
@@ -22,7 +22,7 @@ Future<void> getDeviceInfo() async {
       deviceInfoService.deviceSdkInt = androidInfo.version.sdkInt;
     } else if (Platform.isIOS) {
       final iosInfo = await deviceInfoPlugin.iosInfo;
-      deviceInfoService.deviceName = iosInfo.name;
+      deviceInfoService.deviceName = '' ; //iosInfo.name
       deviceInfoService.deviceModel = iosInfo.model;
       deviceInfoService.deviceManufacturer = 'Apple';
       deviceInfoService.deviceSystemVersion = iosInfo.systemVersion;

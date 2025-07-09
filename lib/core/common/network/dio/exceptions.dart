@@ -20,6 +20,7 @@ Failure getDioException(DioException error) {
         return DataSource.RECIEVE_TIMEOUT.getFailure();
       case DioExceptionType.badResponse:
         final errorData = error.response?.data;
+        // error
         final message = errorData?["error"] ?? errorData?["message"];
 
         final errorCode = errorData?["error_code"];
@@ -43,11 +44,6 @@ Failure getDioException(DioException error) {
         if (errorCode == 'TRS:DOES_NOT_HAVE_PERMISSION_TODAY') {
           return Failure(statusCode, message);
         }
-
-        // if ( message.isNotEmpty) {
-        //   return Failure(statusCode, message);
-        // }
-
         if (errorCode != null) {
           if (errorCode != "") {
             return getKnownErrors(

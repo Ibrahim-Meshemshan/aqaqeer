@@ -424,6 +424,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'year'**
   String get year;
+
+  /// No description provided for @fail_login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed, incorrect data'**
+  String get fail_login;
+
+  /// No description provided for @mobile_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile Number'**
+  String get mobile_number;
+
+  /// No description provided for @please_enter_mobile_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter mobile number'**
+  String get please_enter_mobile_number;
+
+  /// No description provided for @please_enter_valid_mobile_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid mobile number'**
+  String get please_enter_valid_mobile_number;
+
+  /// No description provided for @fail_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Password dose not match'**
+  String get fail_confirm;
+
+  /// No description provided for @meddle_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Meddle Name'**
+  String get meddle_name;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -4,7 +4,7 @@ import 'package:aqaqeer/core/common/widgets/icons/required_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../feature/auth/presentation/sign_up/state/sign_up_provider.dart';
+import '../../../../feature/auth/presentation/sign_up/presentation/state/sign_up_provider.dart';
 import '../../../injection/injection.dart';
 import '../../../l10n/localizations/app_localizationsNew.dart';
 import '../../config/theme/src/colors.dart';

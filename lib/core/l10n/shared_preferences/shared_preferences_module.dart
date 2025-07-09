@@ -1,7 +1,4 @@
 
-import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 // @module
 // abstract class SharedPreferencesModule {
 //
@@ -9,4 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 //   Future<SharedPreferences> getSharedPreferences()async {
 //     return await SharedPreferences.getInstance();
 //   }
+// }
+
+// @module
+// abstract class RegisterModule {
+//   @singleton
+//   Dio dio() => Dio();
 // }

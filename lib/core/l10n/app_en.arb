@@ -55,5 +55,12 @@
   "field_required": "field required",
   "day": "day",
   "month": "month",
-  "year": "year"
+  "year": "year",
+
+  "fail_login": "Login failed, incorrect data",
+  "mobile_number": "Mobile Number",
+  "please_enter_mobile_number": "Please enter mobile number",
+  "please_enter_valid_mobile_number": "Please enter a valid mobile number",
+  "fail_confirm": "Password dose not match",
+  "meddle_name": "Meddle Name"
 }

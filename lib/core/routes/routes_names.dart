@@ -1,13 +1,15 @@
 class RoutesNames {
 
-  static const String splashScreen = "/splashScreen";//
+  static const String splashScreen = "/";//splashScreen
   static const String firstOnboardingScreen = "/firsOnBoarding";
   static const String pageViewScreen = "/pageViewScreen";
-  static const String signupScreen = "/signup";
+  static const String signupScreen = "/signup"; //
+  static const String secondStepSignUpForm = "/SecondStepSignUpForm";
+  static const String thirdStepSignUpForm = "/thirdStepSignUpForm";
   static const String viewScreen = "/view";
   static const String oTPScreen = "/oTPScreen";
-  static const String loginScreen = "/loginScreen";
-  static const String rootScreenView = "/"; //rootScreenView
+  static const String loginScreen = "/loginScreen";//
+  static const String rootScreenView = "/rootScreenView"; //
   static const String homeBodyScreen = "/homeBodyScreen"; //
   static const String profileScreen = "/profileScreen";
   static const String newsScreen = "/newsScreen";

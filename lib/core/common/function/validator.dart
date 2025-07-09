@@ -1,4 +1,5 @@
 import 'package:aqaqeer/core/common/config/lang/app_localizations.dart';
+import 'package:aqaqeer/core/l10n/localizations/app_localizationsNew.dart';
 import 'package:flutter/cupertino.dart';
 
 String? validator(
@@ -13,11 +14,14 @@ String? validator(
     return confirmPassword();
   }
   if (value!.isEmpty) {
-    return 'fields_required'.tr(context);
+    return AppLocalizations.of(context)!.field_required;
+      //'fields_required'.tr(context);
   }
 
-  if (isMobileNum == true && value.length != 11) {
-    return 'whatsApp_validation'.tr(context);
+  if (isMobileNum == true && value.length < 10)  {
+    // 11
+    return AppLocalizations.of(context)!.field_required;
+    //'whatsApp_validation'.tr(context)
   }
 
   if (isEmail == true &&
@@ -25,8 +29,9 @@ String? validator(
           .hasMatch(value)) {
     return 'validate_email'.tr(context);
   }
-  if (isPassword == true && value.length < 6) {
-    return ('password_validation').tr(context);
+  if (isPassword == true && value.length < 8) {
+    return AppLocalizations.of(context)!.field_required;
+    // ('password_validation').tr(context);
   }
   if (isAverage == true &&
       (double.parse(value) < 0 || double.parse(value) > 100)) {

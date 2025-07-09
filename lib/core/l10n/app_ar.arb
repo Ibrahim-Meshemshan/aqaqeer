@@ -29,7 +29,7 @@
   "cancel": "إلغاء",
   "first_name": "الاسم الأول",
   "highlights": "أبرز الأحداث",
-  "last_name": "الاسم الأخير",
+  "last_name": "الكنية",
   "delete_account": "حذف الحساب",
   "confirm": "تأكيد",
   "are_you_sure_you_want_to_delete_your_account": "هل أنت متأكد أنك تريد حذف حسابك؟  \\nلا يمكن التراجع عن هذا الإجراء.",
@@ -46,7 +46,7 @@
   "please_enter_first_name": "يرجى إدخال الاسم",
   "please_enter_last_name": "يرجى إدخال الكنية",
   "please_enter_date_of_birth": "يرجى إدخال تاريخ الميلاد",
-  "confirm_password": "تأكيد كامة المرور",
+  "confirm_password": "تأكيد كلمة المرور",
   "confirm_pass_match_validation": "تأكيد مطابقة كلمة المرور",
   "activate_the_account": "تفعيل الحساب",
   "previous": "السابق",
@@ -55,6 +55,15 @@
   "field_required": "الحقل مطلوب",
   "day": "اليوم",
   "month": "الشهر",
-  "year": "السنة"
+  "year": "السنة",
+
+  "fail_login": "فشل تسجيل الدخول البيانات غير صحيحة",
+  "fail_signup": "فشل التسجيل  البيانات غير صحيحة",
+  "mobile_number": "رقم الموبايل",
+  "please_enter_mobile_number": "يرجى إدخال رقم الموبايل ",
+  "please_enter_valid_mobile_number": "يرجى إدخال رقم موبايل صحيح",
+  "fail_confirm": "غير مطابقة لكلمة المرور",
+  "meddle_name": "اسم الأب"
+
 
 }

@@ -1,4 +1,7 @@
 import 'dart:developer';
+import 'package:aqaqeer/feature/auth/data/models/signup_model.dart';
+import 'package:aqaqeer/feature/auth/data/models/user_model.dart';
+import 'package:aqaqeer/feature/auth/domain/entities/signup_params.dart';
 import 'package:either_dart/either.dart';
 import '../../../../core/common/network/error_handler.dart';
 import '../../../../core/common/network/failure.dart';
@@ -8,9 +11,6 @@ import '../../domain/entities/login_params.dart';
 import '../../domain/repos/auth_repository.dart';
 import '../data_source/local/local.dart';
 import '../data_source/remote/auth_remote.dart';
-import '../models/change_password_model.dart';
-import '../../domain/entities/change_password_params.dart';
-import '../models/user_model.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final AuthRemote remote;
@@ -20,7 +20,7 @@ class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl({
     required this.remote,
     required this.local,
-    required this.networkInfo
+    required this.networkInfo,
   });
 
   @override
@@ -29,41 +29,60 @@ class AuthRepositoryImpl extends AuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        UserModel userModel = await remote.login(
-          params: loginParams,
+        UserModel userModel = await remote.login(login: loginParams);
+        await local.saveAuthToken(userModel.accessToken.toString());
+        await local.saveRememberToken(userModel.refreshToken!.toString());
+        log(
+          'the token is=====================${locator.get<AuthLocal>().getAuthToken()}',
         );
-        local.saveAuthToken(userModel.data!.tOKEN.toString());
-        local.saveAuthUserName(userModel.data?.uSERNAME.toString()??'');
-        local.saveAuthFullName(userModel.data?.eXTRA?.fULLNAME.toString()??'');
-        local.saveRememberToken(userModel.data?.rEMEMBERTOKEN.toString()??'');
-        log('the token is=====================${locator.get<AuthLocal>().getAuthToken()}');
         return Right(userModel);
       } catch (error) {
-        log('error in repo: $error');
+        log('error repo :$error');
         return Left(ErrorHandler.handle(error).failure);
       }
     } else {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
-
   }
 
-  Future<Either<Failure, dynamic>> changePassword(
-      {required ChangePasswordParam changePasswordParam}) async {
+  @override
+  Future<Either<Failure, SignupModel>> signup({
+    required SignupParams signupParams,
+  }) async {
     if (await networkInfo.isConnected) {
       try {
-        ChangePasswordModel changePasswordModel = await remote.getChangePassword(
-          changePasswordParam: changePasswordParam,
+        SignupModel signupModel = await remote.signUp(signup: signupParams);
+        await local.saveAuthToken(signupModel.accessToken.toString());
+        await local.saveRememberToken(signupModel.refreshToken!.toString());
+        log(
+          'the token is=====================${locator.get<AuthLocal>().getAuthToken()}',
         );
-        return Right(
-          changePasswordModel,
-        );
+        return Right(signupModel);
       } catch (error) {
+        log('signup error repo :$error');
         return Left(ErrorHandler.handle(error).failure);
       }
     } else {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
-
   }
 }
+
+  // Future<Either<Failure, dynamic>> changePassword(
+  //     {required ChangePasswordParam changePasswordParam}) async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       ChangePasswordModel changePasswordModel = await remote.getChangePassword(
+  //         changePasswordParam: changePasswordParam,
+  //       );
+  //       return Right(
+  //         changePasswordModel,
+  //       );
+  //     } catch (error) {
+  //       return Left(ErrorHandler.handle(error).failure);
+  //     }
+  //   } else {
+  //     return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+  //   }
+  //
+  // }

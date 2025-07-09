@@ -1,17 +1,16 @@
 import 'package:aqaqeer/core/provider/app_config_provider.dart';
 import 'package:aqaqeer/core/routes/routes_names.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../core/common/config/theme/src/colors.dart';
-import '../../../../../../core/common/config/theme/src/styles.dart';
-import '../../../../../../core/common/function/get_width_height_screen.dart';
-import '../../../../../../core/common/widgets/buttons/custom_button.dart';
-import '../../../../../../core/common/widgets/custom_texts/custom_text.dart';
-import '../../../../../../core/common/widgets/my_custom_widgets/customs_decoration/custom_borders.dart';
-import '../../../../../../core/common/widgets/text_field/custom_text_field.dart';
-import '../../../../../../core/di/di.dart';
-import '../../../../../../core/injection/injection.dart';
-import '../../../../../../core/l10n/localizations/app_localizationsNew.dart';
+import '../../../../../../../core/common/config/theme/src/colors.dart';
+import '../../../../../../../core/common/config/theme/src/styles.dart';
+import '../../../../../../../core/common/function/get_width_height_screen.dart';
+import '../../../../../../../core/common/widgets/buttons/custom_button.dart';
+import '../../../../../../../core/common/widgets/custom_texts/custom_text.dart';
+import '../../../../../../../core/common/widgets/my_custom_widgets/customs_decoration/custom_borders.dart';
+import '../../../../../../../core/common/widgets/text_field/custom_text_field.dart';
+import '../../../../../../../core/di/di.dart';
+import '../../../../../../../core/injection/injection.dart';
+import '../../../../../../../core/l10n/localizations/app_localizationsNew.dart';
 import '../../state/sign_up_provider.dart';
 
 class ViewScreen extends StatelessWidget {
@@ -19,6 +18,7 @@ class ViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SingleChildScrollView(
@@ -80,7 +80,7 @@ class ViewScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: 25),
                     CustomText(
-                      text: AppLocalizations.of(context)!.first_name,
+                      text: localization.first_name,
                       fontWeight: FontWeight.bold,
                     ),
                     SizedBox(height: 10),
@@ -101,10 +101,34 @@ class ViewScreen extends StatelessWidget {
                       controller: TextEditingController(
                         text: locator.get<SignUpProvider>().name,
                       ),
-                    ),
+                    ), // todo: first name
                     SizedBox(height: 20),
                     CustomText(
-                      text: AppLocalizations.of(context)!.last_name,
+                      text: localization.meddle_name,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(height: 10),
+                    CustomTextField(
+                      cursorColor: AppColors.primaryColor,
+                      border: true,
+                      filledColor: AppColors.lightGray,
+                      enabledBorder: CustomBorders.authBorder,
+                      readOnly: true,
+                      focusedBorder: CustomBorders.authBorder,
+                      errorBorder: CustomBorders.errorBorder,
+                      focusedErrorBorder: CustomBorders.errorBorder,
+                      hintStyle: TextStyle(color: AppColors.primaryGray2),
+                      prefixIcon: Icon(
+                        Icons.person_outlined,
+                        color: AppColors.black,
+                      ),
+                      controller: TextEditingController(
+                        text: locator.get<SignUpProvider>().meddle_name,
+                      ),
+                    ), // todo: meddle name
+                    SizedBox(height: 20),
+                    CustomText(
+                      text: localization.last_name,
                       fontWeight: FontWeight.bold,
                     ),
                     SizedBox(height: 10),
@@ -123,12 +147,12 @@ class ViewScreen extends StatelessWidget {
                         color: AppColors.black,
                       ),
                       controller: TextEditingController(
-                        text: locator.get<SignUpProvider>().surName,
+                        text: locator.get<SignUpProvider>().last_name,
                       ),
-                    ),
+                    ), // todo: last name
                     SizedBox(height: 20),
                     CustomText(
-                      text: AppLocalizations.of(context)!.date_of_birth,
+                      text: localization.mobile_number,
                       fontWeight: FontWeight.bold,
                     ),
                     SizedBox(height: 10),
@@ -144,73 +168,14 @@ class ViewScreen extends StatelessWidget {
                       isNumberFormat: true,
                       hintStyle: TextStyle(color: AppColors.primaryGray2),
                       prefixIcon: Icon(
-                        Icons.date_range_outlined,
+                        Icons.phone,
                         color: AppColors.black,
                       ),
                       controller: TextEditingController(
-                        text: locator.get<SignUpProvider>().date,
+                        text: locator.get<SignUpProvider>().mobile,
                       ),
-                    ),
+                    ), // todo: mobile
                     SizedBox(height: 50),
-                    // CustomText(
-                    //   text: 'الرقم الوطني',
-                    //   fontWeight: FontWeight.bold,
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // CustomTextField(
-                    //   cursorColor: AppColors.secondaryColor,
-                    //   border: true,
-                    //   filledColor: AppColors.white,
-                    //   enabledBorder: CustomBorders.authBorder,
-                    //   readOnly: true,
-                    //   focusedBorder: CustomBorders.authBorder,
-                    //   errorBorder: CustomBorders.errorBorder,
-                    //   focusedErrorBorder: CustomBorders.errorBorder,
-                    //   isNumberFormat: true,
-                    //   hintStyle: TextStyle(color: AppColors.primaryGray2),
-                    //   prefixIcon: Icon(
-                    //     CupertinoIcons.person_crop_rectangle,
-                    //     color: AppColors.primaryGray2,
-                    //   ),
-                    //   controller: TextEditingController(
-                    //       text: locator.get<SignUpProvider>().nationalId),
-                    // ),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
-                    // CustomText(
-                    //   text: 'رقم الموبايل',
-                    //   fontWeight: FontWeight.bold,
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // Directionality(
-                    //   textDirection: TextDirection.ltr,
-                    //   child: CustomTextField(
-                    //     cursorColor: AppColors.secondaryColor,
-                    //     border: true,
-                    //     filledColor: AppColors.white,
-                    //     enabledBorder: CustomBorders.authBorder,
-                    //     readOnly: true,
-                    //     focusedBorder: CustomBorders.authBorder,
-                    //     errorBorder: CustomBorders.errorBorder,
-                    //     focusedErrorBorder: CustomBorders.errorBorder,
-                    //     isMobileNum: true,
-                    //     hintStyle: TextStyle(color: AppColors.primaryGray2),
-                    //     prefixIcon: Icon(
-                    //       Icons.phone_iphone,
-                    //       color: AppColors.primaryGray2,
-                    //     ),
-                    //     // controller: TextEditingController(
-                    //     //     text: '+${locator.get<AppManagerLocal>().getCustomer()?.data?.countryCode} ${locator.get<SignUpProvider>().mobile}'),
-                    //   ),
-                    // ),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
                     Container(
                       color: AppColors.white,
                       padding: const EdgeInsets.only(
@@ -224,15 +189,17 @@ class ViewScreen extends StatelessWidget {
                         width: getWidthScreen(context),
                         onPressed: () {
                           locator.get<SignUpProvider>().setFormIndex(2);
-                          Navigator.pushReplacementNamed(
-                            context,
-                            RoutesNames.oTPScreen,
-                          );
-                          // Navigator.pushReplacementNamed(
-                          //     context, RoutesNames.signupScreen);
-                          // Navigator.pop(context);
+                          // Navigator.pushNamed(context, RoutesNames.signupScreen);
+                          Navigator.pop(context);
+                          
+                          // locator.get<SignUpProvider>().setFormIndex(2);
+                          // Navigator.pushNamed(
+                          //   context,
+                          //   RoutesNames.thirdStepSignUpForm,
+                          // );
+
                         },
-                        text: AppLocalizations.of(context)!.next,
+                        text: localization.next,
                         textStyle: CustomTextStyle.titleMedium(
                           context,
                           fontWeight: FontWeight.bold,

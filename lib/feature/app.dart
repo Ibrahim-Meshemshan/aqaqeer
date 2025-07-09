@@ -6,17 +6,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import '../core/common/config/lang/state/language_bloc.dart';
+import '../core/common/config/lang/state/store_current_lang.dart';
 import '../core/common/config/theme/src/theme.dart';
 import '../core/common/config/theme/state/theme_app.dart';
 import '../core/common/constant/strings.dart';
 import '../core/injection/injection.dart';
+import '../core/l10n/localizations/app_localizationsNew.dart';
+import '../core/provider/app_config_provider.dart';
+import '../core/routes/routes_generator.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 // final RouteTracker routeTracker = RouteTracker(); // Create an instance
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
+   MyApp({super.key});
+  late AppConfigProvider appConfigProvider;
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -24,6 +28,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    late AppConfigProvider appConfigProvider;
     // show vertical only
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
@@ -49,6 +54,7 @@ class _MyAppState extends State<MyApp> {
                 create: (_) => ThemeService(),
                 child: Builder(
                   builder: (context) {
+                    appConfigProvider = Provider.of<AppConfigProvider>(context);
                     return BlocBuilder<LanguageBloc, LanguageState>(
                       builder: (context, state) {
                         return MaterialApp(
@@ -57,9 +63,10 @@ class _MyAppState extends State<MyApp> {
                           theme: AppThemes.lightThemeData,
                           debugShowCheckedModeBanner: false,
                           //
-                          //   locale: Locale(
-                          //   locator.get<LanguageStorage>().getCurrentLang() ?? 'en',
-                          // ),
+                          localizationsDelegates: AppLocalizations.localizationsDelegates,
+                          supportedLocales: AppLocalizations.supportedLocales,
+                          locale: Locale(appConfigProvider.getLocal()),
+                          onGenerateRoute: RouteGenerator.generateRoutes,
                           //   localizationsDelegates: [
                           //     AppLocalizationsOld.delegates,
                           //     GlobalCupertinoLocalizations.delegate,

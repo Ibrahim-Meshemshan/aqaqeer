@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 
-import '../ui/widgets/first_step_signUp_form.dart';
-import '../ui/widgets/second_step_signUp_form.dart';
-import '../ui/widgets/third_step_signUp_form.dart';
+import '../presentation/ui/widgets/first_step_signUp_form.dart';
+import '../presentation/ui/widgets/second_step_signUp_form.dart';
+import '../presentation/ui/widgets/third_step_signUp_form.dart';
 
 
 
-Widget determineForm(int index,bool birthdateRequired) {
+
+Widget determineForm(int index) {
   if (index == 0) {
-    return FirstStepSignUpForm(birthdateRequired:birthdateRequired);
+    return FirstStepSignUpForm();
   }
   if (index == 1) {
     return const SecondStepSignUpForm();

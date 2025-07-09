@@ -3,8 +3,8 @@ part of 'sign_up_bloc.dart';
 @immutable
 sealed class SignUpEvent {}
 class SignUpSubmission extends SignUpEvent{
-  // SignUpParams? signUpParams;
-  // SignUpSubmission({this.signUpParams});
+  SignupParams signUpParams;
+  SignUpSubmission({required this.signUpParams});
 }
 
 class GetSignUpOtpEvent extends SignUpEvent {

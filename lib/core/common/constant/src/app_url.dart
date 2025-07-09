@@ -8,7 +8,7 @@ class AppUrl {
 
   static String get deleteAccount => '$baseUrl/delete-my-account';
 
-  static String get baseUrl => locator.get<CashHelper>().getString(AppStrings.BASE_URL_KEY)??'';
+  static String get baseUrl => "https://new.aqaqer.com";
 
   static String get chatUrl =>
       locator.get<CashHelper>().getString('chatUrl') ?? '';
@@ -19,8 +19,33 @@ class AppUrl {
   static String get chatSocketUrl =>
       locator.get<CashHelper>().getString('chatSocketUrl') ?? '';
 
+
+
+
+
+
+
+
   /// Login
-  static String get login => '$baseUrl/user/auth/login';
+  static String get login => '$baseUrl/api/auth/login';
+  static String get signup => '$baseUrl/api/register';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /// Home
   static String get getNews => '$baseUrl/nws/news/getNewsByCategory';

@@ -23,6 +23,7 @@ Future initInjection() async {
   await profileInject();
   await appManagerInject();
   await notificationInject();
+
   // await transportInject();
   // await inventoryInjection();
   // await studentsAbsencesInject();

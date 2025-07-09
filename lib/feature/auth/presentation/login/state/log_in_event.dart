@@ -5,7 +5,6 @@ abstract class LoginEvent {}
 
 class Login extends LoginEvent {
   final LoginParams loginParams;
-
   Login({required this.loginParams});
 }
 

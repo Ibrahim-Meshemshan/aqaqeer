@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../../../../../core/common/config/theme/src/colors.dart';
 import '../../../../../../../core/common/config/theme/src/styles.dart';
 import '../../../../../../../core/common/function/get_width_height_screen.dart';
+import '../../../../../../../core/common/network/netword_info.dart';
 import '../../../../../../../core/common/widgets/custom_texts/custom_text.dart';
 import '../../../../../../../core/common/widgets/snack_bar/snack_bar_custom.dart';
 import '../../../../../../../core/injection/injection.dart';
@@ -52,13 +53,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
             return BlocProvider(
               create: (context) => locator.get<SignUpBloc>(),
               child: BlocConsumer<SignUpBloc, SignUpState>(
-                listener: (context, state) {
+                listener: (context, state) async{
                   if (state.signUpState.isLoading()) {
                     CircularProgressIndicator(color: AppColors.primaryColor,);
                   } else if (state.signUpState.isFail()) {
                     showSnackBar(context: context,
-                        message:  localization.fail_login,
+                        // await locator.get<NetworkInfo>().isConnected? ' قيمة الموبايل مُستخدمة من قبل' : 'تحقق من اتصالك بالانترنت'
+                        message: state.signUpState.error ?? '',
                         icon: Icons.error);
+                    if(await locator.get<NetworkInfo>().isConnected == false)
+                      return;
+                    locator.get<SignUpProvider>().setFormIndex(1);
                   } else if (state.signUpState.isSuccess()) {
                     Navigator.pushReplacementNamed(
                         context, RoutesNames.rootScreenView);
@@ -140,7 +145,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         ),
                                       ),
                                       SizedBox(height: 20),
-                                      determineForm(context.read<SignUpProvider>().formIndex ?? 0),
+                                      determineForm(context
+                                          .read<SignUpProvider>()
+                                          .formIndex ?? 0),
                                     ],
                                   ),
                                 ),

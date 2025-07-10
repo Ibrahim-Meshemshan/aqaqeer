@@ -28,10 +28,11 @@ class ThirdStepSignupForm extends StatefulWidget {
 
 class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
 
-  TextEditingController password = TextEditingController();
-  TextEditingController confirmPassword = TextEditingController();
+
 
   SignUpProvider provider = locator.get<SignUpProvider>();
+  TextEditingController password = TextEditingController(text: locator.get<SignUpProvider>().password);
+  TextEditingController confirmPassword = TextEditingController(text: locator.get<SignUpProvider>().confirmPassword);
   TextEditingController firstName = TextEditingController(
     text: locator.get<SignUpProvider>().name,
   );
@@ -48,7 +49,7 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
 
-    return  Container(
+    return Container(
             height: getHeightScreen(context) / 1.5,
             width: getWidthScreen(context),
             child: Form(
@@ -70,7 +71,7 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
                     isPassword: true,
                     focusedErrorBorder: CustomBorders.errorBorder,
                     hintStyle: CustomTextStyle.titleSmall(context),
-                    prefixIcon: Icon(Icons.password),
+                    prefixIcon: Icon(Icons.lock_outline),
                     controller: password,
                     onChanged: (txt) {
                       locator
@@ -101,7 +102,7 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
                       isConfirmPassword: true,
                       focusedErrorBorder: CustomBorders.errorBorder,
                       hintStyle: CustomTextStyle.titleSmall(context),
-                      prefixIcon: Icon(Icons.password),
+                      prefixIcon: Icon(Icons.lock_outline),
                       controller: confirmPassword,
                       onChanged: (txt) {
                         locator
@@ -123,7 +124,7 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
                   Container(
                     color: AppColors.white,
                     padding:
-                    const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                    const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                     child: CustomButton(
                       height: 50,
                       width: getWidthScreen(context),
@@ -172,7 +173,7 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
                             middleName: meddle_name.text,
                             lastName: last_name.text,
                             mobile: formatPhoneToInternational(mobile.text),
-                            
+
                           )));
                         }
                       },

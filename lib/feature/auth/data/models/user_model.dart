@@ -15,6 +15,14 @@
     this.refreshToken,
   });
 
+  String? getAllErrorMessages(){
+    if(errors == null) return message ?? 'Unknown Error Occurred';
+    final errorMessage = errors?.entries.map((entry) {
+      final value = entry.value;
+      return '${value.toString()}';
+    },).join('\n');
+    return errorMessage;
+  }
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

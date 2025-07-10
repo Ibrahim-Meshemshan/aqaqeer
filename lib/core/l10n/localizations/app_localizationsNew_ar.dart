@@ -190,4 +190,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get meddle_name => 'اسم الأب';
+
+  @override
+  String get no_internet_error => 'لا يوجد اتصال بالانترنت';
 }

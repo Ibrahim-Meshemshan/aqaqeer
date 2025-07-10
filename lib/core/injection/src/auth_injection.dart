@@ -1,4 +1,5 @@
 import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/bloc/sign_up_bloc.dart';
+import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/bloc/signup_provider_bloc.dart';
 
 import '../../../feature/auth/data/data_source/local/local.dart';
 import '../../../feature/auth/data/data_source/remote/auth_remote.dart';
@@ -12,6 +13,7 @@ import '../injection.dart';
 Future? authInject() async {
 
   locator.registerLazySingleton(()=>SignUpProvider());
+  locator.registerLazySingleton(()=>SignupProviderBloc());
 
   locator.registerSingleton(AuthRemote(
     dioClient: locator.get<DioClient>(),

@@ -26,7 +26,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             loginParams: event.loginParams);
         result.fold((fail) =>
             emit(state.copyWith(
-                logInState: BlocStatus.fail(error: fail.message))), (login) =>
+                logInState: BlocStatus.fail(error: fail.message))),
+              (login) =>
             emit(state.copyWith(
               logInState: BlocStatus.success(model: login)
             ),),);

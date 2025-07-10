@@ -62,5 +62,6 @@
   "please_enter_mobile_number": "Please enter mobile number",
   "please_enter_valid_mobile_number": "Please enter a valid mobile number",
   "fail_confirm": "Password dose not match",
-  "meddle_name": "Meddle Name"
+  "meddle_name": "Father Name",
+  "no_internet_error": "No internet connection"
 }

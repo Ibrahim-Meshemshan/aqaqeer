@@ -458,8 +458,14 @@ abstract class AppLocalizations {
   /// No description provided for @meddle_name.
   ///
   /// In en, this message translates to:
-  /// **'Meddle Name'**
+  /// **'Father Name'**
   String get meddle_name;
+
+  /// No description provided for @no_internet_error.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get no_internet_error;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

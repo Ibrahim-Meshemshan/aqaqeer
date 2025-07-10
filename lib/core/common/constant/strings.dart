@@ -26,7 +26,7 @@ class AppStrings {
   static const String strTimeoutError = "timeout_error";
   static const String strDefaultError = "default_error";
   static const String strCacheError = "cache_error";
-  static const String strNoInternetError = "no_internet_error";
+  static const String strNoInternetError = "تحقق من اتصالك بالانترنت";
   static const String strLoginFail = "login_err_msg";
   static const String strTokenFailed = "API:TOKEN_FAILED";
   static const String strConnectionError = "connection error";

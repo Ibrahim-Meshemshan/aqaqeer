@@ -1,4 +1,5 @@
 import 'package:aqaqeer/core/common/function/validator.dart';
+import 'package:aqaqeer/core/common/network/netword_info.dart';
 import 'package:aqaqeer/core/common/widgets/snack_bar/snack_bar_custom.dart';
 import 'package:aqaqeer/core/injection/injection.dart';
 import 'package:aqaqeer/core/l10n/localizations/app_localizationsNew.dart';
@@ -15,6 +16,7 @@ import '../../../../../../core/common/widgets/my_custom_widgets/customs_decorati
 import '../../../../../../core/common/widgets/text_field/custom_text_field.dart';
 import '../../../../../../resources/assets.gen.dart';
 import '../../../../domain/entities/login_params.dart';
+import '../../../sign_up/presentation/state/sign_up_provider.dart';
 import '../../state/log_in_bloc.dart';
 import '../widgets/signup_text.dart';
 import '../widgets/smile_shape_clipper.dart';
@@ -45,12 +47,13 @@ class _LoginScreenState extends State<LoginScreen> {
         body: BlocProvider(
             create: (context) => locator.get<LoginBloc>(),
             child: BlocConsumer<LoginBloc, LoginState>(
-                listener: (context, state) {
+                listener: (context, state) async {
                   if (state.logInState.isLoading()) {
                     CircularProgressIndicator(color: AppColors.primaryColor,);
                   } else if (state.logInState.isFail()) {
                     showSnackBar(context: context,
-                        message: state.logInState.model?.message ?? localization.fail_login,
+                        message: state.logInState.error ?? 'UnExpected error',
+                        // message: state.logInState.error ?? 'asd',
                         icon: Icons.error);
                   } else if (state.logInState.isSuccess()) {
                     Navigator.pushReplacementNamed(
@@ -140,37 +143,32 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                         SizedBox(height: 10),
                                         CustomTextField(
-                                          prefixIcon: Icon(
-                                              Icons.person_2_outlined),
-                                          cursorColor: AppColors
-                                              .secondaryColor,
+                                          cursorColor: AppColors.secondaryColor,
                                           border: true,
                                           filledColor: AppColors.lightGray,
                                           keyboardType: TextInputType.number,
-                                          enabledBorder: CustomBorders
-                                              .authBorder,
-                                          focusedBorder: CustomBorders
-                                              .focusBorder,
-                                          errorBorder: CustomBorders
-                                              .errorBorder,
-                                          focusedErrorBorder: CustomBorders
-                                              .errorBorder,
-                                          isNumberFormat: true,
+                                          enabledBorder: CustomBorders.authBorder,
+                                          focusedBorder: CustomBorders.focusBorder,
+                                          errorBorder: CustomBorders.errorBorder,
+                                          maxLength: 10,
+                                          isMobileNum: true,
                                           focusNode: mobileFocusNode,
-                                          textInputAction: TextInputAction
-                                              .next,
+                                          focusedErrorBorder: CustomBorders.errorBorder,
+                                          isNumberFormat: true,
+                                          hintStyle: CustomTextStyle.titleSmall(context),
+                                          prefixIcon: Icon(Icons.phone),
                                           controller: userName,
-                                          onChanged: (txt) {},
-                                          //locator.get<AppManagerLocal>().getCustomer()?.data?.usernameHint
-                                          hintText: localization
-                                              .user_name,
-                                          hintStyle: TextStyle(
-                                            color: AppColors.hintTextColor,
-                                          ),
+
+                                          onChanged: (txt) {
+                                            locator
+                                                .get<SignUpProvider>()
+                                                .mobile = txt;
+                                          },
+                                          hintText: localization.mobile_number,
+                                          // format: '${locator.get<AppManagerLocal>().getCustomer()?.data?.usernameHint}',
                                           customValidator: (value) =>
                                               validator(context: context,
-                                                  isMobileNum: true,
-                                                  value: value),
+                                                value: value, isMobileNum: true,),
                                         ),
                                         SizedBox(height: 20),
                                         CustomText(

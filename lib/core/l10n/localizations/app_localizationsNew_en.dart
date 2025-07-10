@@ -189,5 +189,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fail_confirm => 'Password dose not match';
 
   @override
-  String get meddle_name => 'Meddle Name';
+  String get meddle_name => 'Father Name';
+
+  @override
+  String get no_internet_error => 'No internet connection';
 }

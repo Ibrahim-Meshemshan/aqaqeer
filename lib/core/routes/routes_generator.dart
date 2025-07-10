@@ -1,5 +1,6 @@
 import 'package:aqaqeer/core/routes/routes_names.dart';
 import 'package:aqaqeer/feature/auth/presentation/login/ui/screens/login.dart';
+import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/bloc/signup_provider_bloc.dart';
 import 'package:aqaqeer/feature/profile/profile/presentation/ui/screens/barcode_screen.dart';
 import 'package:aqaqeer/feature/profile/profile/presentation/ui/screens/personal_profile_screen.dart';
 import 'package:aqaqeer/feature/profile/profile/presentation/ui/screens/privacy_policy_screen.dart';
@@ -9,6 +10,7 @@ import 'package:aqaqeer/feature/root/ui/screens/root_screen.dart';
 import 'package:aqaqeer/feature/root/ui/screens/splash_screen.dart';
 import 'package:aqaqeer/feature/services/presentation/ui/screen/services_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../feature/auth/presentation/sign_up/presentation/ui/screens/OTP_screen.dart';
 import '../../feature/auth/presentation/sign_up/presentation/ui/screens/sign_up_screen.dart';
 import '../../feature/auth/presentation/sign_up/presentation/ui/screens/view_screen.dart';
@@ -29,7 +31,11 @@ class RouteGenerator {
       case RoutesNames.pageViewScreen:
         return MaterialPageRoute(builder: (context) => OnboardingViewScreen());
       case RoutesNames.signupScreen:
-        return MaterialPageRoute(builder: (context) => SignUpScreen());
+        return MaterialPageRoute(builder: (context) =>
+            BlocProvider(
+              create: (context) => SignupProviderBloc(),
+              child: SignUpScreen(),
+            ));
       case RoutesNames.secondStepSignUpForm:
         return MaterialPageRoute(builder: (context) => SecondStepSignUpForm());
       case RoutesNames.thirdStepSignUpForm:

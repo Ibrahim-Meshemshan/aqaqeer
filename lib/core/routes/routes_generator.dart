@@ -72,8 +72,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => MyHomePage());
       case RoutesNames.appNewsScreen:
         return MaterialPageRoute(builder: (context) => AppNewsScreen());
-      case RoutesNames.newsScreen:
-        return MaterialPageRoute(builder: (context) => AppNewsScreenNew());
+      // case RoutesNames.newsScreen:
+      //   return MaterialPageRoute(builder: (context) => AppNewsScreenNew());
 
 
       default:

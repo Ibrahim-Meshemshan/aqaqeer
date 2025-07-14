@@ -1,8 +1,10 @@
 import 'package:aqaqeer/core/injection/injection.dart';
+import 'package:aqaqeer/core/l10n/localizations/app_localizationsNew.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/common/config/theme/src/colors.dart';
 import '../../../../../core/common/config/theme/src/styles.dart';
@@ -17,7 +19,7 @@ import '../../../../../core/common/widgets/loader_widget.dart';
 import '../../../../../resources/assets.gen.dart';
 import '../../state/home_bloc.dart';
 
-class NewsDetailScreen extends StatelessWidget {
+class NewsDetailScreen extends StatefulWidget {
   final int newsIndex;
   final bool isAppNews;
 
@@ -27,15 +29,29 @@ class NewsDetailScreen extends StatelessWidget {
     this.isAppNews = false,
   });
 
+
+  @override
+  State<NewsDetailScreen> createState() => _NewsDetailScreenState();
+}
+
+
+class _NewsDetailScreenState extends State<NewsDetailScreen> {
+
+  // @override
+  // void initState() {
+  //   context.read<HomeBloc>().add(FetchNewsDetails());
+  //   super.initState();
+  // }
   // @override
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'تفاصيل الخبر',
+        title: localization.new_details,
         centerTitle: true,
         fontColor: AppColors.black,
-        icon: Icon(Icons.arrow_forward_outlined),
+        icon: Icon(Icons.close,size: 30,),
         onTap: () {
           Navigator.pop(context);
         },
@@ -62,8 +78,9 @@ class NewsDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomText(
-                          //newsData?.title ??
-                          text: "عنوان الخبر",
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          text: newsDetailsData?.title ?? '',
                           style: CustomTextStyle.headlineMedium(context),
                         ),
                         const SizedBox(height: 10),
@@ -77,7 +94,7 @@ class NewsDetailScreen extends StatelessWidget {
                               alignment: Alignment.center,
                               color: AppColors.primaryGray,
                               width:
-                              isAppNews
+                              widget.isAppNews
                                   ? getWidthScreen(context) / 2
                                   : getWidthScreen(context) - 20,
                               child: ClipRRect(
@@ -88,7 +105,7 @@ class NewsDetailScreen extends StatelessWidget {
                                   url: AppUrl.baseUrl.split('api').join(
                                     newsDetailsData?.imagePath ?? '',
                                   ),
-                                  width: isAppNews
+                                  width: widget.isAppNews
                                       ? getWidthScreen(context) / 2
                                       : getWidthScreen(context),
                                   height: 200,
@@ -100,7 +117,7 @@ class NewsDetailScreen extends StatelessWidget {
                                     height: 200,
                                     fit: BoxFit.fill,
                                   ),
-                                ): Image.asset(
+                                ) : Image.asset(
                                   Assets.images.aqaqeerLogo.path,
                                   // Fallback image
                                   width: getWidthScreen(context),
@@ -112,28 +129,25 @@ class NewsDetailScreen extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 30),
-
-                        HtmlWidget(
-                          //newsData?.content ??
-                          "لا يوجد محتوى متاح",
-                          textStyle: CustomTextStyle.bodyMedium(context),
-                          onTapUrl: (url) async {
-                            // return await _launchURL(url);
-                            return await true;
-                          },
-                        ),
+                        // HtmlWidget(
+                        //   newsDetailsData?.content ??
+                        //       localization.no_content_avi,
+                        //   textStyle: CustomTextStyle.bodyMedium(context),
+                        //   onTapUrl: (url) async {
+                        //     return await _launchURL(url);
+                        //     // return await true;
+                        //   },
+                        // ),
                         SizedBox(height: 20),
                         // News Content
                         Row(
                           children: [
                             CustomText(
-                              text: "تاريخ النشر : ",
+                              text: "${localization.publish_at} : ",
                               style: CustomTextStyle.bodyMedium(context),
                               maxLines: null, // Allow full text
                             ),
                             CustomText(
-                              /*DateFormat('yyyy-MM-dd')
-                              .format(newsData!.publishAt)*/
                               text: newsDetailsData?.publishAt ?? '',
                               style: CustomTextStyle.bodyMedium(context),
                               maxLines: null, // Allow full text
@@ -151,8 +165,8 @@ class NewsDetailScreen extends StatelessWidget {
                               height: 50,
                               width: getWidthScreen(context) * 0.7,
                               onPressed: () {
-                                // => _launchURL(newsData.link!)
-                              },
+                                //_launchURL(newsDetailsData?.link)
+                                },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -161,7 +175,7 @@ class NewsDetailScreen extends StatelessWidget {
                                   const SizedBox(width: 8),
                                   CustomText(
                                     //newsData.buttonTitle ??
-                                    text: 'فتح الرابط',
+                                    text: localization.open_link,
                                     color: AppColors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -170,67 +184,48 @@ class NewsDetailScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // if ((newsData.withActionButton) == 1 &&
-                        //     (newsData.routeToPage)&&newsData.hasPermission==true)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Center(
-                            child: CustomButton(
-                              height: 50,
-                              width: getWidthScreen(context) * 0.7,
-                              onPressed: () {
-                                // if (newsData.pageCode == 'MRQ') {
-                                //   Navigator.pushNamed(
-                                //       context, Routes.complaintsScreen);
-                                // } else if (newsData.pageCode == 'ARQ') {
-                                //   Navigator.pushNamed(
-                                //       context, Routes.addNewRequestScreen);
-                                // }  else if (newsData.pageCode == 'MPR') {
-                                //   Navigator.pushNamed(context, Routes.personalProfileScreen);
-                                // }  else if (newsData.pageCode == 'PRF') {
-                                //   Navigator.pushNamed(context, Routes.preferencesScreen);                                }
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  // Icon(Icons.open_in_new,
-                                  //     color: AppColors.white),
-                                  // const SizedBox(width: 8),
-                                  // CustomText(
-                                  //   text: newsData.buttonTitle ??
-                                  //       'الإنتقال لصفحة ${newsData.page ?? ''}',
-                                  //   color: AppColors.white,
-                                  //   fontWeight: FontWeight.bold,
-                                  // ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+
+                        // if ((newsDetailsData?.withActionButton) == 1 && (newsDetailsData!.routeToPage) == true && newsDetailsData.hasPermission==true)
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(vertical: 10),
+                        //   child: Center(
+                        //     child: CustomButton(
+                        //       height: 50,
+                        //       width: getWidthScreen(context) * 0.7,
+                        //       onPressed: () {
+                        //         // if (newsData.pageCode == 'MRQ') {
+                        //         //   Navigator.pushNamed(
+                        //         //       context, Routes.complaintsScreen);
+                        //         // } else if (newsData.pageCode == 'ARQ') {
+                        //         //   Navigator.pushNamed(
+                        //         //       context, Routes.addNewRequestScreen);
+                        //         // }  else if (newsData.pageCode == 'MPR') {
+                        //         //   Navigator.pushNamed(context, Routes.personalProfileScreen);
+                        //         // }  else if (newsData.pageCode == 'PRF') {
+                        //         //   Navigator.pushNamed(context, Routes.preferencesScreen);                                }
+                        //       },
+                        //       child: Row(
+                        //         mainAxisAlignment: MainAxisAlignment.center,
+                        //         children: [
+                        //           // Icon(Icons.open_in_new,
+                        //           //     color: AppColors.white),
+                        //           // const SizedBox(width: 8),
+                        //           // CustomText(
+                        //           //   text: newsData.buttonTitle ??
+                        //           //       'الإنتقال لصفحة ${newsData.page ?? ''}',
+                        //           //   color: AppColors.white,
+                        //           //   fontWeight: FontWeight.bold,
+                        //           // ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
                 );
-                // (state.newsDetailState.isFail()) {
-                //              return CustomPlaceholder(
-                //                message: state.newsDetailState.error,
-                //              );
-                //            }
-                // Container();}
-
-
-                // Future<bool> _launchURL(String link) async {
-                //   final url = Uri.parse(link);
-                //   if (await canLaunchUrl(url)) {
-                //     await launchUrl(url, mode: LaunchMode.platformDefault);
-                //     return true;
-                //   } else {
-                //     debugPrint('Could not launch $url');
-                //     return false;
-                //   }
-                // }
               }
-
               return Container();
             },
 
@@ -241,4 +236,14 @@ class NewsDetailScreen extends StatelessWidget {
       ),
     );
   }
+  // Future<bool> _launchURL(String link) async {
+  //   final url = Uri.parse(link);
+  //   if (await canLaunchUrl(url)) {
+  //     await launchUrl(url, mode: LaunchMode.platformDefault);
+  //     return true;
+  //   } else {
+  //     debugPrint('Could not launch $url');
+  //     return false;
+  //   }
+  // }
 }

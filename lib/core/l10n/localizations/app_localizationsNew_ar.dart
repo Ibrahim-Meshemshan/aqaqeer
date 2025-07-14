@@ -196,4 +196,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get app_news => 'أخبار التطبيق';
+
+  @override
+  String get open_link => 'فتح الرابط';
+
+  @override
+  String get publish_at => 'تاربخ النشر';
+
+  @override
+  String get no_content_avi => 'لا يوجد محتوى متاح';
+
+  @override
+  String get new_title => 'عنوان الخبر';
+
+  @override
+  String get new_details => 'تفاصيل الخبر';
 }

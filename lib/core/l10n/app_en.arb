@@ -63,5 +63,14 @@
   "fail_confirm": "Password dose not match",
   "meddle_name": "Father Name",
   "no_internet_error": "No internet connection",
-  "app_news": "App News"
+  "app_news": "App News",
+
+  "open_link": "Open link",
+  "publish_at": "Publish at",
+  "no_content_avi": "No content avila",
+  "new_title": "New title",
+  "new_details":"New details"
+
+
+
 }

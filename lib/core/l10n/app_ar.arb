@@ -65,7 +65,13 @@
   "fail_confirm": "غير مطابقة لكلمة المرور",
   "meddle_name": "اسم الأب",
   "no_internet_error": "لا يوجد اتصال بالانترنت",
-  "app_news": "أخبار التطبيق"
+  "app_news": "أخبار التطبيق",
+
+  "open_link": "فتح الرابط",
+  "publish_at": "تاربخ النشر",
+  "no_content_avi": "لا يوجد محتوى متاح",
+  "new_title":"عنوان الخبر",
+  "new_details":"تفاصيل الخبر"
 
 
 }

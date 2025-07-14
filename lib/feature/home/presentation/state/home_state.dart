@@ -1,6 +1,6 @@
 part of 'home_bloc.dart';
 
- class HomeState extends Equatable {
+class HomeState extends Equatable {
 
    final BlocStatus<NewsModel> newsStatus;
    final BlocStatus<NewsDetailsModel> newsDetailsStatus;
@@ -30,4 +30,4 @@ part of 'home_bloc.dart';
      );
    }
 
- }
+}

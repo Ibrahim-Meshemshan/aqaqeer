@@ -196,4 +196,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get app_news => 'App News';
+
+  @override
+  String get open_link => 'Open link';
+
+  @override
+  String get publish_at => 'Publish at';
+
+  @override
+  String get no_content_avi => 'No content avila';
+
+  @override
+  String get new_title => 'New title';
+
+  @override
+  String get new_details => 'New details';
 }

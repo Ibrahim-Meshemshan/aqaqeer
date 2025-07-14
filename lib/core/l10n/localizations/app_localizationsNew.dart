@@ -472,6 +472,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'App News'**
   String get app_news;
+
+  /// No description provided for @open_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Open link'**
+  String get open_link;
+
+  /// No description provided for @publish_at.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish at'**
+  String get publish_at;
+
+  /// No description provided for @no_content_avi.
+  ///
+  /// In en, this message translates to:
+  /// **'No content avila'**
+  String get no_content_avi;
+
+  /// No description provided for @new_title.
+  ///
+  /// In en, this message translates to:
+  /// **'New title'**
+  String get new_title;
+
+  /// No description provided for @new_details.
+  ///
+  /// In en, this message translates to:
+  /// **'New details'**
+  String get new_details;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

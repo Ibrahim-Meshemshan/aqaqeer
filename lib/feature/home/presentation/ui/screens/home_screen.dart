@@ -24,9 +24,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               UserInfoSection(fullName: 'محمد نبيل'),
               StaticsPharmacySection(),
-              BlocProvider(
-                  create: (context) =>  locator.get<HomeBloc>(),
-                  child: PharmacyNewsSection()),
+              PharmacyNewsSection(),
             ],
           ),
         ),

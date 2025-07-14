@@ -1,65 +1,84 @@
-class   NewsModel {
-  bool? success;
-  Data? data;
+class NewsModel {
+  NewsModel({
+      this.data,});
 
-  NewsModel({this.success, this.data});
-
-   NewsModel.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['success'] = success;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
-  }
-}
-
-class Data {
-  List<News>? news;
-
-  Data({this.news});
-
-  Data.fromJson(Map<String, dynamic> json) {
-    if (json['News'] != null) {
-      news = <News>[];
-      json['News'].forEach((v) {
-        news!.add(News.fromJson(v));
+  NewsModel.fromJson(dynamic json) {
+    if (json['data'] != null) {
+      data = [];
+      json['data'].forEach((v) {
+        data?.add(News.fromJson(v));
       });
     }
   }
+  List<News>? data;
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (news != null) {
-      data['News'] = news!.map((v) => v.toJson()).toList();
+    final map = <String, dynamic>{};
+    if (data != null) {
+      map['data'] = data?.map((v) => v.toJson()).toList();
     }
-    return data;
+    return map;
   }
+
 }
 
 class News {
-  String? nEWSTITLE;
-  String? nEWSBODY;
-  String? nEWSDATE;
+  News({
+      this.id, 
+      this.title, 
+      this.buttonTitle, 
+      this.imagePath, 
+      this.publishAt, 
+      this.withActionButton, 
+      this.link, 
+      this.routing, 
+      this.routeToPage, 
+      this.routToLink, 
+      this.pageCode, 
+      this.hasPermission,});
 
-  News({this.nEWSTITLE, this.nEWSBODY, this.nEWSDATE});
-
-  News.fromJson(Map<String, dynamic> json) {
-    nEWSTITLE = json['NEWS_TITLE'];
-    nEWSBODY = json['NEWS_BODY'];
-    nEWSDATE = json['NEWS_DATE'];
+  News.fromJson(dynamic json) {
+    id = json['id'];
+    title = json['title'];
+    buttonTitle = json['button_title'];
+    imagePath = json['image_path'];
+    publishAt = json['publish_at'];
+    withActionButton = json['with_action_button'];
+    link = json['link'];
+    routing = json['routing'];
+    routeToPage = json['route_to_page'];
+    routToLink = json['rout_to_link'];
+    pageCode = json['page_code'];
+    hasPermission = json['has_permission'];
   }
+  num? id;
+  String? title;
+  dynamic buttonTitle;
+  String? imagePath;
+  String? publishAt;
+  num? withActionButton;
+  dynamic link;
+  dynamic routing;
+  bool? routeToPage;
+  bool? routToLink;
+  dynamic pageCode;
+  bool? hasPermission;
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['NEWS_TITLE'] = nEWSTITLE;
-    data['NEWS_BODY'] = nEWSBODY;
-    data['NEWS_DATE'] = nEWSDATE;
-    return data;
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['title'] = title;
+    map['button_title'] = buttonTitle;
+    map['image_path'] = imagePath;
+    map['publish_at'] = publishAt;
+    map['with_action_button'] = withActionButton;
+    map['link'] = link;
+    map['routing'] = routing;
+    map['route_to_page'] = routeToPage;
+    map['rout_to_link'] = routToLink;
+    map['page_code'] = pageCode;
+    map['has_permission'] = hasPermission;
+    return map;
   }
+
 }

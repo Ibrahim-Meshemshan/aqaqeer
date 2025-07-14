@@ -24,7 +24,7 @@ class DropdownDatePicker extends StatefulWidget {
 
 class DropdownDatePickerState extends State<DropdownDatePicker> {
   DateTime currentDate = DateTime.now();
-  SignUpProvider provider = locator.get<SignUpProvider>();
+  // SignUpProvider provider = locator.get<SignUpProvider>();
   String? selectedDay;
   String? selectedMonth;
   String? selectedYear;
@@ -33,9 +33,9 @@ class DropdownDatePickerState extends State<DropdownDatePicker> {
   void initState() {
     super.initState();
     // List<String> dateParts = splitDate(currentDate);
-    selectedDay = provider.date?.split('-')[0];
-    selectedMonth = provider.date?.split('-')[1];
-    selectedYear = provider.date?.split('-')[2];
+    // selectedDay = provider.date?.split('-')[0];
+    // selectedMonth = provider.date?.split('-')[1];
+    // selectedYear = provider.date?.split('-')[2];
   }
 
   void _notifyParent() {

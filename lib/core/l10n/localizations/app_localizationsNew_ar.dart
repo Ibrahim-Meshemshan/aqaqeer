@@ -193,4 +193,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get no_internet_error => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get app_news => 'أخبار التطبيق';
 }

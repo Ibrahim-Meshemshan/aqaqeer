@@ -1,9 +1,11 @@
+import 'package:aqaqeer/core/injection/injection.dart';
+import 'package:aqaqeer/feature/home/presentation/state/home_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/common/config/theme/src/colors.dart';
 import '../widgets/bottom_home_section.dart';
 import '../widgets/statics_section.dart';
 import '../widgets/user_info_section.dart';
-
 
 
 class HomeScreen extends StatelessWidget {
@@ -22,7 +24,9 @@ class HomeScreen extends StatelessWidget {
             children: [
               UserInfoSection(fullName: 'محمد نبيل'),
               StaticsPharmacySection(),
-              PharmacyNewsSection(),
+              BlocProvider(
+                  create: (context) =>  locator.get<HomeBloc>(),
+                  child: PharmacyNewsSection()),
             ],
           ),
         ),

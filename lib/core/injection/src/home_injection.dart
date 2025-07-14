@@ -5,6 +5,7 @@ import '../../common/network/netword_info.dart';
 import '../injection.dart';
 
 Future? homeInject() {
+
   locator.registerSingleton(HomeRemoteImp());
 
   locator.registerSingleton(HomeRepoImp(

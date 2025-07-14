@@ -16,7 +16,7 @@ Widget secureNetworkImage({
   final headers = {
     'token': locator.get<AuthLocal>().getAuthToken() ?? '',
     'os-type': AppStrings.operatingSystem,
-    'userTypeCode': 'RAS_USER',
+    // 'userTypeCode': 'RAS_USER',
   };
 
   if (url.toLowerCase().endsWith('.svg')) {

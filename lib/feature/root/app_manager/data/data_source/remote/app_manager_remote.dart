@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import '../../../../../../core/common/constant/src/app_url.dart';
 import '../../../../../../core/common/constant/strings.dart';
@@ -11,6 +10,7 @@ import '../../../domain/entity/send_error_param.dart';
 import '../../model/app_info_model.dart';
 import '../../model/delete_fcm_token_model.dart';
 import '../../model/permissions_model.dart';
+
 
 class AppManagerRemote {
   DioClient dioClient;

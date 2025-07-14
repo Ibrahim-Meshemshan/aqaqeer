@@ -8,7 +8,8 @@ class AppUrl {
 
   static String get deleteAccount => '$baseUrl/delete-my-account';
 
-  static String get baseUrl => "https://new.aqaqer.com";
+  // todo: Aqaqeer
+  static String get baseUrl => "https://new.aqaqer.com/api";
 
   static String get chatUrl =>
       locator.get<CashHelper>().getString('chatUrl') ?? '';
@@ -21,16 +22,13 @@ class AppUrl {
 
 
 
+  /// todo: Auth Aqaqeer
+  static String get login => '$baseUrl/auth/login';
+  static String get signup => '$baseUrl/register';
 
-
-
-
-
-  /// Login
-  static String get login => '$baseUrl/api/auth/login';
-  static String get signup => '$baseUrl/api/register';
-
-
+  /// todo: Home Aqaqeer
+  static String get getNews => '$baseUrl/news';
+  static String get getNewsDetails => '$baseUrl/news/1';
 
 
 
@@ -46,9 +44,6 @@ class AppUrl {
 
 
 
-
-  /// Home
-  static String get getNews => '$baseUrl/nws/news/getNewsByCategory';
 
   /// Services
 

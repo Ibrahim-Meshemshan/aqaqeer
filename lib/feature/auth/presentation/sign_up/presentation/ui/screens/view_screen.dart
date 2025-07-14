@@ -11,6 +11,7 @@ import '../../../../../../../core/common/widgets/text_field/custom_text_field.da
 import '../../../../../../../core/di/di.dart';
 import '../../../../../../../core/injection/injection.dart';
 import '../../../../../../../core/l10n/localizations/app_localizationsNew.dart';
+import '../../state/cubit/signup_provider_cubit.dart';
 import '../../state/sign_up_provider.dart';
 
 class ViewScreen extends StatelessWidget {
@@ -99,7 +100,7 @@ class ViewScreen extends StatelessWidget {
                         color: AppColors.black,
                       ),
                       controller: TextEditingController(
-                        text: locator.get<SignUpProvider>().name,
+                        text: locator.get<SignupProviderCubit>().state.firstName,
                       ),
                     ), // todo: first name
                     SizedBox(height: 20),
@@ -123,7 +124,7 @@ class ViewScreen extends StatelessWidget {
                         color: AppColors.black,
                       ),
                       controller: TextEditingController(
-                        text: locator.get<SignUpProvider>().meddle_name,
+                        text: locator.get<SignupProviderCubit>().state.meddleName,
                       ),
                     ), // todo: meddle name
                     SizedBox(height: 20),
@@ -147,7 +148,7 @@ class ViewScreen extends StatelessWidget {
                         color: AppColors.black,
                       ),
                       controller: TextEditingController(
-                        text: locator.get<SignUpProvider>().last_name,
+                        text: locator.get<SignupProviderCubit>().state.lastName,
                       ),
                     ), // todo: last name
                     SizedBox(height: 20),
@@ -172,7 +173,7 @@ class ViewScreen extends StatelessWidget {
                         color: AppColors.black,
                       ),
                       controller: TextEditingController(
-                        text: locator.get<SignUpProvider>().mobile,
+                        text: locator.get<SignupProviderCubit>().state.mobile,
                       ),
                     ), // todo: mobile
                     SizedBox(height: 50),
@@ -188,7 +189,7 @@ class ViewScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(35),
                         width: getWidthScreen(context),
                         onPressed: () {
-                          locator.get<SignUpProvider>().setFormIndex(2);
+                          locator.get<SignupProviderCubit>().setFormIndex(2);
                           // Navigator.pushNamed(context, RoutesNames.signupScreen);
                           Navigator.pop(context);
                           

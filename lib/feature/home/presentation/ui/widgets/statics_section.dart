@@ -11,6 +11,7 @@ import '../../../../../core/common/config/theme/src/styles.dart';
 import '../../../../../core/common/constant/src/app_url.dart';
 import '../../../../../core/common/function/get_width_height_screen.dart';
 import '../../../../../core/common/widgets/image_widgets/secure_network_image.dart';
+import '../../../../../core/routes/routes_names.dart';
 import '../../../../../resources/assets.gen.dart';
 import 'services_section_item.dart';
 
@@ -41,7 +42,7 @@ class _StaticsPharmacySectionState extends State<StaticsPharmacySection> {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                // Navigator.pushNamed(context, RoutesNames.appNewsScreen);
+                Navigator.pushNamed(context, RoutesNames.appNewsScreen);
               },
               child: ServicesSectionItem(),
             ),

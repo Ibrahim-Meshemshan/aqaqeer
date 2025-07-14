@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../feature/root/splash_screen.dart';
 class Routes {
   Routes._();
 
@@ -62,8 +64,11 @@ class Routes {
       "lib/features/services/solutions/tsc/presentation/screen/add_mark_test_screen.dart";
   static const String testSchoolScreen =
       "lib/features/services/solutions/tsc/presentation/screen/testSchoolScreen.dart";
+
+
+
   // static final routes = <String, WidgetBuilder>{
-  //   splash: (BuildContext context) => const SplashScreen(),
+  //   splash: (BuildContext context) =>  SplashScreen(),
   //   loginInScreen: (BuildContext context) => const LoginBody(),
   //   mainRootPage: (BuildContext context) => const RootScreen(),
   //   //profile

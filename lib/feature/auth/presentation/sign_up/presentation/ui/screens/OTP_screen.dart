@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:aqaqeer/core/l10n/localizations/app_localizationsNew.dart';
 import 'package:aqaqeer/core/routes/routes_names.dart';
+import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/cubit/signup_provider_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -38,7 +39,7 @@ class _OTPScreenState extends State<OTPScreen>
 
   bool isTimerActive = true;
   late AnimationController animationController;
-  SignUpProvider provider = locator.get<SignUpProvider>();
+  // SignUpProvider provider = locator.get<SignUpProvider>();
   bool? isForgetPassword;
   int seconds = 60;
   bool resendInProgress = false;
@@ -283,7 +284,7 @@ class _OTPScreenState extends State<OTPScreen>
                                   context: context,
                                 );
                               }
-                              locator.get<SignUpProvider>().setFormIndex(2);
+                              locator.get<SignupProviderCubit>().setFormIndex(2);
                               Navigator.pushNamed(
                                 context,
                                 RoutesNames.loginScreen,

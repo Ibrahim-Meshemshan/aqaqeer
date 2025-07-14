@@ -26,17 +26,14 @@ class _BodySplashState extends State<BodySplash> {
     Future.delayed(Duration(seconds: 2), () async {
   final onboarding = locator.get<SharedPreferences>().getBool('onboarding') ?? false;
   final token = locator.get<AuthLocal>().getRememberToken();
-  
-  print("token is:$token");
-  print('Onboarding = $onboarding');
-  print('Remember Token = $token');
+
 
   if (!mounted) return;
 
   if (onboarding) {
     Navigator.pushReplacementNamed(
       context,
-      token != null ? RoutesNames.rootScreenView : RoutesNames.signupScreen,
+      token != null ? RoutesNames.rootScreenView : RoutesNames.loginScreen,
     );
   } else {
     Navigator.pushReplacementNamed(context, RoutesNames.firstOnboardingScreen);

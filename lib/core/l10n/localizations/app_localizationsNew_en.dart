@@ -193,4 +193,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get no_internet_error => 'No internet connection';
+
+  @override
+  String get app_news => 'App News';
 }

@@ -466,6 +466,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No internet connection'**
   String get no_internet_error;
+
+  /// No description provided for @app_news.
+  ///
+  /// In en, this message translates to:
+  /// **'App News'**
+  String get app_news;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

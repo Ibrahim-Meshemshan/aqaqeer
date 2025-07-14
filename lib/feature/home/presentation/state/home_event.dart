@@ -10,3 +10,9 @@ class FetchNews extends HomeEvent{
 
 }
 
+class FetchNewsDetails extends HomeEvent{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+
+}

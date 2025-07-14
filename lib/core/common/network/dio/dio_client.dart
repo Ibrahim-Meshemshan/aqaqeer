@@ -16,6 +16,7 @@ class DioClient extends ApiServices {
 
   DioClient(this._dio);
 
+
   // final token =locator.get<AuthLocal>().getAuthToken();
   @override
   Future<Response> get(
@@ -24,11 +25,9 @@ class DioClient extends ApiServices {
         dynamic params,
         dynamic token}) async {
     _dio.options.headers = {
-
-      'token': token ?? locator.get<AuthLocal>().getAuthToken(),
-      // 'userTypeCode': AppStrings.userTypeCode,
-      'lang': 'ar', // getIt<AppConfigProvider>().selectedLocal  application/x-www-form-urlencoded
-
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${token ?? locator.get<AuthLocal>().getAuthToken()}',
+      'lang': AppStrings.langAr,
     };
     var response = await _dio.get(url, data: data, queryParameters: params);
     return response;
@@ -43,9 +42,9 @@ class DioClient extends ApiServices {
   }) async {
     _dio.options.headers = {
       'lang': AppStrings.langAr,
-      // 'Content-Type': 'application/json',
       'Accept': 'application/json',
-      
+      // 'Content-Type': 'application/json',
+
     };
 
     return await _dio.post(

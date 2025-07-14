@@ -1,6 +1,7 @@
 import 'package:aqaqeer/core/common/config/theme/src/styles.dart';
 import 'package:aqaqeer/core/common/function/validator.dart';
 import 'package:aqaqeer/core/l10n/localizations/app_localizationsNew.dart';
+import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/cubit/signup_provider_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../../core/common/config/theme/src/colors.dart';
@@ -24,7 +25,7 @@ class _SecondStepSignUpFormState extends State<SecondStepSignUpForm> {
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
 
-  TextEditingController mobile = TextEditingController(text: locator.get<SignUpProvider>().mobile);
+  TextEditingController mobile = TextEditingController(text: locator.get<SignupProviderCubit>().state.mobile);
 
   final FocusNode passwordFocusNode = FocusNode();
   final FocusNode mobileFocusNode = FocusNode();
@@ -56,15 +57,13 @@ class _SecondStepSignUpFormState extends State<SecondStepSignUpForm> {
             isNumberFormat: true,
             hintStyle: CustomTextStyle.titleSmall(context),
             prefixIcon: Icon(Icons.phone),
-            controller: mobile.text.isEmpty ? TextEditingController(
-                text: locator
-                    .get<SignUpProvider>()
-                    .mobile) : mobile,
-            onChanged: (txt) {
-              locator
-                  .get<SignUpProvider>()
-                  .mobile = txt;
-            },
+            //mobile.text.isEmpty ? TextEditingController(
+            //                 text: locator
+            //                     .get<SignUpProvider>()
+            //                     .mobile) : mobile
+            controller: mobile,
+            onChanged: (txt) =>
+                context.read<SignupProviderCubit>().updateMobile(txt),
             hintText: localization.mobile_number,
             // format: '${locator.get<AppManagerLocal>().getCustomer()?.data?.usernameHint}',
             customValidator: (value) =>
@@ -84,7 +83,7 @@ class _SecondStepSignUpFormState extends State<SecondStepSignUpForm> {
                   height: 55,
                   width: getWidthScreen(context) / 3,
                   onPressed: () {
-                    context.read<SignUpProvider>().setFormIndex(0);
+                    context.read<SignupProviderCubit>().setFormIndex(0);
                   },
                   text: localization.previous,
                 ),
@@ -95,7 +94,7 @@ class _SecondStepSignUpFormState extends State<SecondStepSignUpForm> {
                   onPressed: () {
                     FocusScope.of(context).requestFocus(FocusNode());
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, RoutesNames.viewScreen);
+                      Navigator.pushReplacementNamed(context, RoutesNames.viewScreen);
                     }
                   },
                   text: localization.next,

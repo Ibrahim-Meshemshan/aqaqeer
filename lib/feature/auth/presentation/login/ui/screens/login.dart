@@ -4,6 +4,7 @@ import 'package:aqaqeer/core/common/widgets/snack_bar/snack_bar_custom.dart';
 import 'package:aqaqeer/core/injection/injection.dart';
 import 'package:aqaqeer/core/l10n/localizations/app_localizationsNew.dart';
 import 'package:aqaqeer/core/routes/routes_names.dart';
+import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/cubit/signup_provider_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -158,14 +159,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           hintStyle: CustomTextStyle.titleSmall(context),
                                           prefixIcon: Icon(Icons.phone),
                                           controller: userName,
-
-                                          onChanged: (txt) {
-                                            locator
-                                                .get<SignUpProvider>()
-                                                .mobile = txt;
-                                          },
+                                          onChanged: (txt)=> locator.get<SignupProviderCubit>().state.mobile = txt,
                                           hintText: localization.mobile_number,
-                                          // format: '${locator.get<AppManagerLocal>().getCustomer()?.data?.usernameHint}',
                                           customValidator: (value) =>
                                               validator(context: context,
                                                 value: value, isMobileNum: true,),

@@ -27,17 +27,12 @@ class AuthRemote {
 
   Future<SignupModel> signUp({required SignupParams signup})async {
     var jsonParams = signup.toJson();
-    // jsonParams['grant_type'] = 'password'; // todo:
     late final Response response;
     response = await dioClient.post(
       url: AppUrl.signup,
       data: jsonParams,
-      option: Options(
-        contentType: Headers.formUrlEncodedContentType
-            // contentType: Headers.jsonContentType
-      )
     );
-    // log('Signup response $response'); // todo:
+
     return SignupModel.fromJson(response.data);
   }
 }

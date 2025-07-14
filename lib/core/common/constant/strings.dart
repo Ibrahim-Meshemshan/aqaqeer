@@ -52,4 +52,6 @@ class AppStrings {
   static String CLIENT_CODE_KEY = 'client_code';
   static String LANG_KEY = 'pref_lang';
   static String ERROR_KEY = 'error_key';
+  static String SHAKE_PHONE = 'shake_phone';
+
 }

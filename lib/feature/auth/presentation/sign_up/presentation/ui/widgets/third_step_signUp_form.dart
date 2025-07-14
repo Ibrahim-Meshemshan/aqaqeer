@@ -1,6 +1,7 @@
 import 'package:aqaqeer/core/common/config/lang/app_localizations.dart';
 import 'package:aqaqeer/feature/auth/domain/entities/signup_params.dart';
 import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/bloc/sign_up_bloc.dart';
+import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/cubit/signup_provider_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -30,19 +31,19 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
 
 
 
-  SignUpProvider provider = locator.get<SignUpProvider>();
-  TextEditingController password = TextEditingController(text: locator.get<SignUpProvider>().password);
-  TextEditingController confirmPassword = TextEditingController(text: locator.get<SignUpProvider>().confirmPassword);
+  SignupProviderCubit provider = locator.get<SignupProviderCubit>();
+  TextEditingController password = TextEditingController(text: locator.get<SignupProviderCubit>().state.password);
+  TextEditingController confirmPassword = TextEditingController(text: locator.get<SignupProviderCubit>().state.confirmPassword);
   TextEditingController firstName = TextEditingController(
-    text: locator.get<SignUpProvider>().name,
+    text: locator.get<SignupProviderCubit>().state.firstName,
   );
   TextEditingController last_name = TextEditingController(
-    text: locator.get<SignUpProvider>().last_name,
+    text: locator.get<SignupProviderCubit>().state.lastName,
   );
   TextEditingController meddle_name = TextEditingController(
-    text: locator.get<SignUpProvider>().meddle_name,
+    text: locator.get<SignupProviderCubit>().state.meddleName,
   );
-  TextEditingController mobile = TextEditingController(text: locator.get<SignUpProvider>().mobile);
+  TextEditingController mobile = TextEditingController(text: locator.get<SignupProviderCubit>().state.mobile);
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -73,18 +74,11 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
                     hintStyle: CustomTextStyle.titleSmall(context),
                     prefixIcon: Icon(Icons.lock_outline),
                     controller: password,
-                    onChanged: (txt) {
-                      locator
-                          .get<SignUpProvider>()
-                          .password = txt;
-                    },
+                    onChanged: (txt) => locator.get<SignupProviderCubit>().state.password = txt,
                     hintText: localization.password,
-                    // format: '${locator.get<AppManagerLocal>().getCustomer()?.data?.usernameHint}',
-                    customValidator: (value) =>
-                        validator(context: context,
+                    customValidator: (value) => validator(context: context,
                             isPassword: true, value: value
                         ),
-
                   ),
                   SizedBox(height: 20),
                   CustomText(
@@ -106,7 +100,7 @@ class _ThirdStepSignupFormState extends State<ThirdStepSignupForm> {
                       controller: confirmPassword,
                       onChanged: (txt) {
                         locator
-                            .get<SignUpProvider>()
+                            .get<SignupProviderCubit>().state
                             .confirmPassword = txt;
                       },
                       hintText: localization.confirm_password,

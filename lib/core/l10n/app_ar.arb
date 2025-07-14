@@ -64,7 +64,8 @@
   "please_enter_valid_mobile_number": "يرجى إدخال رقم موبايل صحيح",
   "fail_confirm": "غير مطابقة لكلمة المرور",
   "meddle_name": "اسم الأب",
-  "no_internet_error": "لا يوجد اتصال بالانترنت"
+  "no_internet_error": "لا يوجد اتصال بالانترنت",
+  "app_news": "أخبار التطبيق"
 
 
 }

@@ -1,6 +1,10 @@
+import 'package:aqaqeer/core/injection/injection.dart';
 import 'package:aqaqeer/core/routes/routes_names.dart';
 import 'package:aqaqeer/feature/auth/presentation/login/ui/screens/login.dart';
-import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/bloc/signup_provider_bloc.dart';
+import 'package:aqaqeer/feature/auth/presentation/sign_up/presentation/state/cubit/signup_provider_cubit.dart';
+import 'package:aqaqeer/feature/home/presentation/ui/screens/app_news_screen.dart';
+import 'package:aqaqeer/feature/home/presentation/ui/screens/news_detail_screen.dart';
+import 'package:aqaqeer/feature/home/presentation/ui/screens/app_news_new.dart';
 import 'package:aqaqeer/feature/profile/profile/presentation/ui/screens/barcode_screen.dart';
 import 'package:aqaqeer/feature/profile/profile/presentation/ui/screens/personal_profile_screen.dart';
 import 'package:aqaqeer/feature/profile/profile/presentation/ui/screens/privacy_policy_screen.dart';
@@ -16,6 +20,7 @@ import '../../feature/auth/presentation/sign_up/presentation/ui/screens/sign_up_
 import '../../feature/auth/presentation/sign_up/presentation/ui/screens/view_screen.dart';
 import '../../feature/auth/presentation/sign_up/presentation/ui/widgets/second_step_signUp_form.dart';
 import '../../feature/auth/presentation/sign_up/presentation/ui/widgets/third_step_signUp_form.dart';
+import '../../feature/home/presentation/state/home_bloc.dart';
 import '../../feature/home/presentation/ui/screens/home_screen.dart';
 import '../../feature/profile/profile/presentation/ui/screens/preferences_screen.dart';
 import '../../feature/root/ui/screens/onboarding_screens/page_view_screen.dart';
@@ -33,7 +38,7 @@ class RouteGenerator {
       case RoutesNames.signupScreen:
         return MaterialPageRoute(builder: (context) =>
             BlocProvider(
-              create: (context) => SignupProviderBloc(),
+              create: (context) => SignupProviderCubit(),
               child: SignUpScreen(),
             ));
       case RoutesNames.secondStepSignUpForm:
@@ -65,6 +70,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => PreferencesScreen());
       case RoutesNames.myHomePage:
         return MaterialPageRoute(builder: (context) => MyHomePage());
+      case RoutesNames.appNewsScreen:
+        return MaterialPageRoute(builder: (context) => AppNewsScreen());
+      case RoutesNames.newsScreen:
+        return MaterialPageRoute(builder: (context) => AppNewsScreenNew());
+
+
       default:
         return MaterialPageRoute(
           builder:

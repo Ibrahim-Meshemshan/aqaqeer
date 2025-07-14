@@ -106,10 +106,10 @@ class UserInfoSection extends StatelessWidget {
                                   return GestureDetector(
                                     onTap: () {
                                       // if(widgetData.url == 'MPR'){
-                                      Navigator.pushNamed(
-                                        context,
-                                        RoutesNames.profileScreen,
-                                      );
+                                      // Navigator.pushNamed(
+                                      //   context,
+                                      //   RoutesNames.profileScreen,
+                                      // );
                                       // }
                                     },
                                     child: Container(

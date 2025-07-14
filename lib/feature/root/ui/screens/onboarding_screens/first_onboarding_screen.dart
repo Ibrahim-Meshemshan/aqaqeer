@@ -98,9 +98,9 @@ class _FirstOnboardingScreenState extends State<FirstOnboardingScreen> with Tick
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.pushNamed(
+                                  Navigator.pushReplacementNamed(
                                     context,
-                                    RoutesNames.pageViewScreen,
+                                    RoutesNames.loginScreen,
                                   );
                                 },
                               ),

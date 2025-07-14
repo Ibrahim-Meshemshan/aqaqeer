@@ -43,10 +43,10 @@ class DioInterceptor extends Interceptor {
 
     // log('stack trace from dio $stackTrace');
     //
-    if (requestPath != AppUrl.sendError) {
-      locator.get<AppManagerBloc>().add(SendError(
-          errorParam: errorParam));
-    }
+    // if (requestPath != AppUrl.sendError) {
+    //   locator.get<AppManagerBloc>().add(SendError(
+    //       errorParam: errorParam));
+    // }
 
     if (err.response != null && err.response!.statusCode == 400) {
       final errorCode = err.response?.data?["error_code"];

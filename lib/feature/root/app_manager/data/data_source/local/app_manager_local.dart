@@ -107,4 +107,14 @@ class AppManagerLocal{
   Future<void> clearErrors() async {
     await cashHelper.remove(AppStrings.ERROR_KEY);
   }
+  Future setShakePhone(bool value) async {
+    log('---- Save ShakePhone to Cash----');
+    await cashHelper.setBool(AppStrings.SHAKE_PHONE, value);
+  }
+
+  bool? getShakePhone() {
+    log('---- Get the ShakePhone from Cash----');
+    return cashHelper.getBool(AppStrings.SHAKE_PHONE);
+  }
+
 }
